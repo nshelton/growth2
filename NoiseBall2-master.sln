@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoiseBall2-master", "Assembly-CSharp.csproj", "{8A945205-5385-DB5B-6C72-5E39DC73FAA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoiseBall2-master", "Assembly-CSharp-Editor.csproj", "{C1CA2A50-D0C1-8C12-C6B0-33609DB1040C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A945205-5385-DB5B-6C72-5E39DC73FAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A945205-5385-DB5B-6C72-5E39DC73FAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A945205-5385-DB5B-6C72-5E39DC73FAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A945205-5385-DB5B-6C72-5E39DC73FAA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1CA2A50-D0C1-8C12-C6B0-33609DB1040C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1CA2A50-D0C1-8C12-C6B0-33609DB1040C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1CA2A50-D0C1-8C12-C6B0-33609DB1040C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1CA2A50-D0C1-8C12-C6B0-33609DB1040C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

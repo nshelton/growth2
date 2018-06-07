@@ -1,0 +1,77 @@
+﻿#pragma kernel UpdateNodes
+#pragma kernel InitNodes
+
+#include "UnityCG.cginc"
+#include "SimplexNoise3D.cginc"
+
+struct Edge
+{
+    int a;
+    int b;
+};
+
+StructuredBuffer<float4> NodeListRead;
+RWStructuredBuffer<float4> NodeListWrite;
+RWStructuredBuffer<Edge> EdgeList;
+
+CBUFFER_START(Params)
+    int NumPoints;
+    float Time;
+    float Scale;
+    float GrowthRate;
+    float MaxSize;
+CBUFFER_END
+
+float snoiseFBM(float3 p)
+{
+    float result = 0;
+
+    result += 0.5 * snoise(p).w;
+    result += 0.25 * snoise(p*2).w;
+    result += 0.12 * snoise(p*4).w;
+    result += 0.06 * snoise(p*8).w;
+
+    return result;
+}
+
+[numthreads(64, 1, 1)]
+void InitNodes(uint id : SV_DispatchThreadID)
+{
+    if ( id > (uint)NumPoints)
+        return;
+
+    float fid = (float)id;
+
+    float3 pos = float3(fid / (float)NumPoints,0,0);
+
+    float4 result = float4(pos, 0);
+    
+    result.a = snoiseFBM(result.xyz);
+
+    NodeListWrite[id] = result;
+}
+
+[numthreads(64, 1, 1)]
+void UpdateNodes(uint id : SV_DispatchThreadID)
+{
+    if ( id > (uint)NumPoints)
+        return;
+
+    float4 this = NodeListRead[id];
+    
+    this.x =  (float)id / (float)NumPoints;
+    this.y += sin(this.x + Time);
+
+    NodeListWrite[id] = this;
+}
+
+// [numthreads(64, 1, 1)]
+// void UpdateEdges(uint id : SV_DispatchThreadID)
+// {
+//     int ida = EdgeList[id].a;
+//     int idb = EdgeList[id].b;
+
+//     float4 
+
+//     float d = length()
+// }
